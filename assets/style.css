@@ -1,0 +1,248 @@
+@font-face{
+    font-family: 'Bourbon W00 Regular';
+    src: url(font/Bourbon.otf);
+    font-style: normal;
+    font-weight: 100;
+}     
+
+html{
+    background-color: #000000;
+    font-family: 'Inconsolata', monospace;
+}
+
+#overlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #000000;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+/*    cursor: pointer;*/
+}
+
+.caution, .results{
+    position: absolute;
+    width: 40%;
+    margin-top: 10vh;
+    margin-left: 25vw;
+    display: block;
+}
+
+#title{
+    font-family: 'Bourbon W00 Regular';
+    letter-spacing: .2vw;
+    color: #ae3267;
+    font-size: 4vw;
+}
+
+#intro{
+    width: 78%;
+    color: #2893aa;
+    line-height: 1.6;
+    padding-top: 4vh;
+    padding-left: 5px;
+}
+
+h1{
+    font-family: 'Bourbon W00 Regular';
+    letter-spacing: .2vw;
+    color: #ae3267;
+}
+
+.results{
+    color: white;
+}
+
+#houseList, #officeList, #roundaboutList, #publicspaceList{
+    color: aqua;
+    display: inline-block;
+}
+
+#cameraFeeds{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-column-gap: 8px;
+    grid-row-gap: 8px;
+}
+
+.feed1, .feed2, .feed3, .feed4, .feed5, .feed6{
+    position: relative;
+    border-style: solid;
+    border-color: #ae3267;
+    margin: .2vw;
+}
+
+.placeholder-loading{
+    display: none;
+
+}
+
+.placeholder-loading img{
+}
+
+.camInfo1, .camInfo2, .camInfo3, .camInfo4, .camInfo5, .camInfo6{
+    position: absolute;
+    background-color: #000000;
+    color: #ffffff;
+    font-size: .8vw;
+    width: 30%;
+    padding: 10px;
+    top: 0;
+}
+
+/* #header{
+    width: 100%;
+    position: fixed;
+    margin-bottom: -2vh;
+} */
+
+.questions{
+    display: inline-block;
+}
+
+#houseQuestion, #workQuestion, #roundaboutQuestion, #publicSpaceQuestion{
+    display: inline-block;
+    padding-left: .5vw;
+/*    margin-bottom: -.5vh;*/
+}
+
+#houseQuestion h1, #workQuestion h1, #roundaboutQuestion h1, #publicSpaceQuestion h1{
+    margin: 0;
+}
+
+.top{
+    /* margin-top: 3vh; */
+    margin-right: 1vw;
+    float: right;
+    display: inline-block;
+    align-items: baseline;
+}
+
+#buttonsTop{
+    display: inline-block;
+    
+}
+
+#camButton, #camButtonStop{
+    display: inline-block;
+    font-family: 'Bourbon W00 Regular';
+    letter-spacing: .2vw;
+    width: 10vw;
+    height: 5vh;
+    font-size: 1vw;
+    border-color: black;
+    background-color: #2893aa;
+    cursor: pointer;
+}
+
+#camButton:hover, #camButtonStop:hover{
+    background-color: #ae3267;
+}
+
+#vote, #vote2, #vote3, #vote4, #vote5, #vote6{
+    color: #ffffff;
+    position: absolute;
+    font-family: 'Bourbon W00 Regular';
+    letter-spacing: .2vw;
+    width: 10vw;
+    height: 5vh;
+    font-size: 1vw;
+    border-style: solid;
+    border-color: #ffffff;
+    border-width: 0vw;
+    background-color: #000000;
+    top: 0;
+    margin-left: -10vw;
+    cursor: pointer;
+}
+
+#vote:hover, #vote2:hover, #vote3:hover, #vote4:hover, #vote5:hover, #vote6:hover{
+    background-color: #ae3267;
+}
+
+.voteTally1, .voteTally2, .voteTally3, .voteTally4, .voteTally5, .voteTally6{
+    color: white;
+    position: absolute;
+    background-color: #000000;
+    color: #ffffff;
+    font-size: .8vw;
+    width: 30%;
+    padding: 10px;
+    top: 5vh;
+    visibility: hidden;    
+}
+
+/*
+#footerArea{
+    width: 60%;
+    height: 15vh;
+    position: fixed;
+    bottom: 0;
+    margin-left: 15vw;
+}
+*/
+
+#footer{
+    display: inline-block;
+    line-height: 4vh;
+    font-family: 'Bourbon W00 Regular';
+    letter-spacing: .2vw;
+    width: 6vw;
+    height: 4vh;
+/*    display: inline-block;*/
+}
+
+#footerOverlay{
+    color: white;
+    position: fixed;
+    width: 37%;
+    margin-left: 25vw;
+    bottom: 60px;
+}
+
+.menuItems{
+    font-size: 1vw;
+    text-align: center;
+    cursor: pointer;
+    color: #2893aa;
+    border-style: solid;
+    border-width: 0.1vw;
+/*    background-color: #2893aa;*/
+}
+
+p{
+    padding: 0;
+    margin-top: 0;
+}
+
+.menuItems2{
+    line-height: 6vh;
+    display: inline-block;
+/*    text-align: center;*/
+    color: black;
+/*    padding-right: 2vw;*/
+    font-family: 'Bourbon W00 Regular';
+    text-align: center;
+    letter-spacing: .2vw;
+    width: 7vw;
+    height: 6vh;
+    font-size: 1vw;
+    border-style: solid;
+    border-width: .3vw;
+    border-color: #000000;
+    background-color: #2893aa;
+    cursor: pointer;
+}
+
+.menuItems:hover{
+    background-color: #2893aa;
+    border-color: #2893aa;
+    color: black;
+}
+
+.menuItems2:hover{
+    background-color: #ae3267;
+}

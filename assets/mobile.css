@@ -1,0 +1,136 @@
+@media only screen and (min-width: 375px) and (max-width: 767px) {
+    
+    .caution, .results{
+        margin-top: 15%;
+    }
+    
+    #footerOverlay {
+        /* margin-bottom: 15%; */
+    }
+
+    #header {
+        /* margin-top: 10%; */
+    }
+}
+
+#overlay{
+    position: fixed;
+}
+
+#header{
+    /* position: absolute; */
+}
+
+
+#title{
+    letter-spacing: .2vw;
+    font-size: 8vw;
+    margin-left: 2%;
+}
+
+.caution, .results{
+    width: 100%;
+    margin-top: 5%;
+    margin-left: 5%;
+}
+
+#footerOverlay {
+    color: white;
+    position: fixed;
+    width: 100%;
+    margin-left: 0;
+    margin-top: 0;
+    margin-left: 5%;
+    margin-bottom: 5%;
+    bottom: 0;
+    z-index: 1;
+}
+
+
+
+.menuItems2{
+    color: black;
+    letter-spacing: .2vw;
+    width: 20%;
+    height: 30%;
+    font-size: 4vw;
+    background-color: #2893aa;
+}
+
+#intro{
+    width: 80%;
+    line-height: 1.6;
+    margin-left: 2%;
+}
+
+h1{
+    top: 0;
+    letter-spacing: .2vw;
+    font-size: 8vw;
+}
+
+#cameraFeeds{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    grid-column-gap: 8px;
+    grid-row-gap: 8px;
+}
+
+.feed1, .feed2, .feed3, .feed4, .feed5, .feed6{
+    margin: .2vw;
+    display: inline-flex;
+}
+
+.camInfo1, .camInfo2, .camInfo3, .camInfo4, .camInfo5, .camInfo6{
+    font-size: 3vw;
+    width: 40%;
+}
+
+.top{
+    /* margin-top: 3vh; */
+    margin-right: 0vw;
+    float: none;
+    display: block;
+    align-items: baseline;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+.menuItems{
+    font-size: 4vw;
+    border-width: 0.1vw;
+}
+
+#footer{
+    line-height: 4vh;
+    letter-spacing: .2vw;
+    width: 22%;
+    height: 4vh;
+}
+
+#camButton, #camButtonStop{
+    letter-spacing: .2vw;
+    width: 46.5%;
+    height: 5vh;
+    font-size: 4vw;
+    margin-top: -10px;
+}
+
+#camButtonStop{
+    width: 95%;
+}
+
+#vote, #vote2, #vote3, #vote4, #vote5, #vote6{
+    right: 0;
+    font-size: 3vw;
+    width: 20%;
+/*    height: 18%;*/
+}
+
+.voteTally1, .voteTally2, .voteTally3, .voteTally4, .voteTally5, .voteTally6{
+    font-size: 3vw;
+    width: 40%;
+
+}

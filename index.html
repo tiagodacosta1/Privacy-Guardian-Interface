@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title>Cam Wars - Vote now!</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/style.css">
+    <link media="screen and (max-width:500px)" rel="stylesheet" href="assets/mobile.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata|Oswald&display=swap" rel="stylesheet">
+    <link rel='icon' href='assets/favicon/favicon.ico' type='image/x-icon'/ >
+    
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-150105181-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-150105181-1');
+    </script>
+
+    
+</head>
+
+<body>
+    
+    <div id="overlay">
+        <div class="caution">
+            <div id="title">Welcome to Cam Wars!</div>
+            <div id="intro">Privacy is an issue which continues to be explored. But do we care about privacy when it comes to CCTV?<br><br>Cam Wars exposes unsecured CCTV cameras from all over the world. You will see live camera feeds displayed side-by-side accompanied with a question. Answer the question by selecting which camera you believe best fits as the response.<br><br>
+            <strong>Caution!</strong> As soon as you press click on a category, your IP address will be shared with the CCTV systems you are viewing.<br><br>Click on a category to begin viewing.</div>
+        </div>
+        
+        <div id="footerOverlay">
+            <p class="menuItems2 HomeView" onclick="feed( feedListHomes )">Homes</p>
+            <p class="menuItems2 OfficeView" onclick="feed( feedListOffices )">Offices</p>
+            <p class="menuItems2 RoundaboutView" onclick="feed( feedListRoundabout )">Driving</p>
+            <p class="menuItems2 PublicView" onclick="feed( feedListPublicSpaces )">Public</p>
+        </div>
+    </div>
+    
+<!--
+    <div class="results">
+        
+        <div id="title">Results</div>
+        
+        <ol id="houseList">
+            <span id="houseListTitle">Top 5 House Scores</span>
+            <li>5</li>
+            <li>4</li>
+            <li>3</li>
+            <li>2</li>
+        </ol>        
+        
+        <ol id="officeList">
+            <span id="officeListTitle">Top 5 Office Scores</span>
+            <li>5</li>
+            <li>4</li>
+            <li>3</li>
+            <li>2</li>
+        </ol>        
+        
+        <ol id="roundaboutList">
+            <span id="roundaboutListTitle">Top 5 Roundabout Scores</span>
+            <li>5</li>
+            <li>4</li>
+            <li>3</li>
+            <li>2</li>
+        </ol>        
+        
+        <ol id="publicspaceList">
+            <span id="publicspaceListTitle">Top 5 Public Spaces Scores</span>
+            <li>5</li>
+            <li>4</li>
+            <li>3</li>
+            <li>2</li>
+        </ol>
+
+    
+    </div>
+-->
+
+    <div id="header">
+        
+        <div class="questions">
+            <div id="houseQuestion">
+                <h1>Vote for: Whose house is prettier?</h1>
+            </div>        
+
+            <div id="workQuestion">
+                <h1>Vote for: Who is slacking off?</h1>
+            </div>        
+
+            <div id="roundaboutQuestion">
+                <h1>Vote for: Whose driving is better?</h1>
+            </div>        
+
+            <div id="publicSpaceQuestion">
+                <h1>Vote for: Where would you visit?</h1>
+            </div>
+        </div>
+    
+        <div class="top">
+<!--            <div id="footer">-->
+                <p class="menuItems HomeView" id="footer" onclick="feed( feedListHomes )">Homes</p>
+                <p class="menuItems OfficeView" id="footer" onclick="feed( feedListOffices )">Offices</p>
+                <p class="menuItems RoundaboutView" id="footer" onclick="feed( feedListRoundabout )">Driving</p>
+                <p class="menuItems PublicView" id="footer" onclick="feed( feedListPublicSpaces )">Public</p>
+<!--            </div>-->
+            
+<!--            <div id="buttonsTop">-->
+<!--                <button id="camButton">Results</button>-->
+                <button id="camButtonStop" value="Refresh Page" onClick="history.go(0)">STOP</button>
+<!--            </div>-->
+        </div>
+
+    </div>
+    
+    <div id="cameraFeeds">
+        
+        <div class="feed1">
+            <img id="feed1" src="" alt="Camera feed appears here" style="width: 100%; height: 100%; z-index: 0;"/>
+            <img class="placeholder-loading" src="assets/loading.gif" style="width: 100%; height: 100%;"/>
+            <div class="camInfo1"></div>
+            <div class="voteTally1"></div>
+            <input type="button" id="vote" value="Vote" onclick="CountFun(event)";/>
+        </div>        
+        
+        <div class="feed2">
+            <img id="feed2" src="" alt="Camera feed appears here" style="width: 100%; height: 100%"/>
+            <img class="placeholder-loading" src="assets/loading.gif" style="width: 100%; height: 100%;"/>
+
+            <div class="camInfo2"></div>
+            <div class="voteTally2"></div>
+            <input type="button" id="vote2" value="Vote" onclick="CountFun(event)";/>
+        </div>        
+        
+        <div class="feed3">
+            <img id="feed3" src="" alt="Camera feed appears here" style="width: 100%; height: 100%"/>
+            <img class="placeholder-loading" src="assets/loading.gif" style="width: 100%; height: 100%;"/>
+
+            <div class="camInfo3"></div>
+            <div class="voteTally3"></div>
+            <input type="button" id="vote3" value="Vote" onclick="CountFun(event)";/>
+        </div>        
+        
+        <div class="feed4">
+            <img id="feed4" src="" alt="Camera feed appears here" style="width: 100%; height: 100%"/>
+            <img class="placeholder-loading" src="assets/loading.gif" style="width: 100%; height: 100%;"/>
+
+            <div class="camInfo4"></div>
+            <div class="voteTally4"></div>
+            <input type="button" id="vote4" value="Vote" onclick="CountFun(event)";/>
+        </div>        
+        
+        <div class="feed5">
+            <img id="feed5" src="" alt="Camera feed appears here" style="width: 100%; height: 100%"/>
+            <img class="placeholder-loading" src="assets/loading.gif" style="width: 100%; height: 100%;"/>
+
+            <div class="camInfo5"></div>
+            <div class="voteTally5"></div>
+            <input type="button" id="vote5" value="Vote" onclick="CountFun(event)";/>
+        </div>        
+        
+        <div class="feed6">
+            <img id="feed6" src="" alt="Camera feed appears here" style="width: 100%; height: 100%"/>
+            <img class="placeholder-loading" src="assets/loading.gif" style="width: 100%; height: 100%;"/>
+
+            <div class="camInfo6"></div>
+            <div class="voteTally6"></div>
+            <input type="button" id="vote6" value="Vote" onclick="CountFun(event)";/>
+        </div>
+    
+    </div>
+    
+<!--
+    <div id="footerArea">
+    
+    <div id="footer">
+        
+        <p class="menuItems HomeView" onclick="feed( feedListHomes )">Homes</p>
+        <p class="menuItems OfficeView" onclick="feed( feedListOffices )">Offices</p>
+        <p class="menuItems RoundaboutView" onclick="feed( feedListRoundabout )">Roundabouts</p>
+        <p class="menuItems PublicView" onclick="feed( feedListPublicSpaces )">Public Spaces</p>
+    
+
+    </div>
+    
+    </div>
+-->
+    
+<script src="https://www.gstatic.com/firebasejs/7.2.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.2.0/firebase-database.js"></script>
+<script src="assets/database.js"></script>
+    
+<script>
+    var feedListHomes = []; 
+    var feedListOffices = [];   
+    var feedListRoundabout = [];
+    var feedListPublicSpaces = [];
+    
+    firebase.database().ref('homes').once('value')
+        .then(data => {
+            data.forEach(snapshot => {
+                feedListHomes.push({
+                    ...snapshot.val(),
+                    key: snapshot.key
+                });
+            })
+        })    
+    
+    firebase.database().ref('offices').once('value')
+        .then(data => {
+            data.forEach(snapshot => {
+                feedListOffices.push({
+                    ...snapshot.val(),
+                    key: snapshot.key
+                });
+            })
+        })    
+    
+    firebase.database().ref('roundabout').once('value')
+        .then(data => {
+            data.forEach(snapshot => {
+                feedListRoundabout.push({
+                    ...snapshot.val(),
+                    key: snapshot.key
+                });
+            })
+        })    
+    
+    firebase.database().ref('publicSpace').once('value')
+        .then(data => {
+            data.forEach(snapshot => {
+                feedListPublicSpaces.push({
+                    ...snapshot.val(),
+                    key: snapshot.key
+                });
+            })
+        })
+    
+    document.querySelector('.HomeView').addEventListener('click', function(){
+        feed(   feedListHomes);
+    })    
+    
+    document.querySelector('.OfficeView').addEventListener('click', function(){
+        feed(feedListOffices);
+    })    
+    
+    document.querySelector('.RoundaboutView').addEventListener('click', function(){
+        feed(feedListRoundabout);
+    })    
+    
+    document.querySelector('.PublicView').addEventListener('click', function(){
+        feed(feedListPublicSpaces);
+    })       
+    
+/*    document.querySelector('#vote').addEventListener('click', function(){
+        feed(feedListPublicSpaces);
+    })   
+    
+    function voteOne(){
+        
+        
+    }*/
+
+    function feed( theFeedList ){
+        var feedCopy = [];
+        for( var i = 0; i < theFeedList.length; i++ ){
+            feedCopy.push( theFeedList[i] );
+        }
+        
+        console.log( theFeedList );
+        var totalCountRandom = Math.floor((Math.random()* feedListHomes.length));
+        console.log(totalCountRandom)
+        
+        var feedOne = feedCopy[totalCountRandom]
+        document.querySelector('#feed1').src = feedOne.ip;
+        document.querySelector('.camInfo1').innerText = feedOne.location + '\n' + feedOne.description;
+        document.querySelector('.voteTally1').innerText = 'No. of votes:' + ' ' + feedOne.votes;
+        document.querySelector('#vote').dataset.id = feedOne.key;
+        document.querySelector('#vote').dataset.type = feedOne.type;
+        document.querySelector('#vote').dataset.votes = feedOne.votes;
+        
+        var remove = feedCopy.splice(totalCountRandom, 1);
+        console.log(remove)
+        
+        var firstSplice = Math.floor((Math.random()* feedCopy.length));
+        
+        var feedTwo = feedCopy[firstSplice]
+        document.querySelector('#feed2').src = feedTwo.ip;
+        document.querySelector('.camInfo2').innerText = feedTwo.location + '\n' + feedTwo.description;
+        document.querySelector('.voteTally2').innerText = 'No. of votes:' + ' ' + feedTwo.votes;
+        document.querySelector('#vote2').dataset.id = feedTwo.key;
+        document.querySelector('#vote2').dataset.type = feedTwo.type;
+        document.querySelector('#vote2').dataset.votes = feedTwo.votes;
+        
+        var remove = feedCopy.splice(firstSplice, 1);
+        console.log(remove)
+        
+        var secondSplice = Math.floor((Math.random()* feedCopy.length));
+
+        var feedThree = feedCopy[secondSplice]
+        document.querySelector('#feed3').src = feedThree.ip;
+        document.querySelector('.camInfo3').innerText = feedThree.location + '\n' + feedThree.description;
+        document.querySelector('.voteTally3').innerText = 'No. of votes:' + ' ' + feedThree.votes;
+        document.querySelector('#vote3').dataset.id = feedThree.key;
+        document.querySelector('#vote3').dataset.type = feedThree.type;
+        document.querySelector('#vote3').dataset.votes = feedThree.votes;
+        
+        var remove = feedCopy.splice(secondSplice, 1);
+        
+        var thirdSplice = Math.floor((Math.random()* feedCopy.length));
+        
+        var feedFour = feedCopy[thirdSplice]
+        document.querySelector('#feed4').src = feedFour.ip;
+        document.querySelector('.camInfo4').innerText = feedFour.location + '\n' + feedFour.description;
+        document.querySelector('.voteTally4').innerText = 'No. of votes:' + ' ' + feedFour.votes;
+        document.querySelector('#vote4').dataset.id = feedFour.key;
+        document.querySelector('#vote4').dataset.type = feedFour.type;
+        document.querySelector('#vote4').dataset.votes = feedFour.votes;
+        
+        var remove = feedCopy.splice(thirdSplice, 1);
+        console.log(remove)
+        
+        var fourthSplice = Math.floor((Math.random()* feedCopy.length));
+        
+        var feedFive = feedCopy[fourthSplice]
+        document.querySelector('#feed5').src = feedFive.ip;
+        document.querySelector('.camInfo5').innerText = feedFive.location + '\n' + feedFive.description;
+        document.querySelector('.voteTally5').innerText = 'No. of votes:' + ' ' + feedFive.votes;
+        document.querySelector('#vote5').dataset.id = feedFive.key;
+        document.querySelector('#vote5').dataset.type = feedFive.type;
+        document.querySelector('#vote5').dataset.votes = feedFive.votes;
+        
+        var remove = feedCopy.splice(fourthSplice, 1);
+        console.log(remove)
+        
+        var fifthSplice = Math.floor((Math.random()* feedCopy.length));
+        
+        var feedSix = feedCopy[fifthSplice]
+        document.querySelector('#feed6').src = feedSix.ip;
+        document.querySelector('.camInfo6').innerText = feedSix.location + '\n' + feedSix.description;
+        document.querySelector('.voteTally6').innerText = 'No. of votes:' + ' ' + feedSix.votes;
+        document.querySelector('#vote6').dataset.id = feedSix.key;
+        document.querySelector('#vote6').dataset.type = feedSix.type;
+        document.querySelector('#vote6').dataset.votes = feedSix.votes;
+        
+        var remove = feedCopy.splice(fifthSplice, 1);
+        console.log(remove)
+        
+    }       
+        
+        var timedelayfooter = 1;
+        var timedelayVote = 1;
+    
+/*        function delayCheckFooter(){
+            if(timedelayfooter == 3)
+            {
+                $('#footer').fadeOut();
+                timedelayfooter = 1;
+            }
+            
+            timedelayfooter = timedelayfooter+1;
+        }
+    
+        $('#footerArea').mousemove(function() {
+            $('#footer').fadeIn();
+        timedelayfooter = 1;
+        clearInterval(_delay);
+        _delay = setInterval(delayCheckFooter, 500);
+        });    
+    
+        _delay = setInterval(delayCheckFooter, 500)        */
+    
+
+    
+
+    
+
+/*    $('#overlay').click(function() {
+        $("#overlay").hide();
+        $("#houseQuestion").show();
+    });   */
+    
+    $("#houseQuestion").hide();
+    $("#workQuestion").hide();
+    $("#roundaboutQuestion").hide();
+    $("#publicSpaceQuestion").hide();
+    $(".results").hide();
+    
+    $('#camButton').click(function() {
+        $(".results").show();
+        $("#footer").show();
+
+        $("#cameraFeeds").hide();
+    });         
+    
+    $('.HomeView').click(function() {
+        $("#houseQuestion").show();
+        $("#workQuestion").hide();
+        $("#roundaboutQuestion").hide();
+        $("#publicSpaceQuestion").hide();
+        $("#overlay").hide();
+    });      
+    
+    $('.OfficeView').click(function() {
+        $("#houseQuestion").hide();
+        $(".voteTally2").hide();
+        $("#workQuestion").show();
+        $("#roundaboutQuestion").hide();
+        $("#publicSpaceQuestion").hide();
+        $("#overlay").hide();
+    });      
+    
+    $('.RoundaboutView').click(function() {
+        $("#houseQuestion").hide();
+        $("#workQuestion").hide();
+        $("#roundaboutQuestion").show();
+        $("#publicSpaceQuestion").hide();
+        $("#overlay").hide();
+    });      
+    
+    $('.PublicView').click(function() {
+        $("#houseQuestion").hide();
+        $("#workQuestion").hide();
+        $("#roundaboutQuestion").hide();
+        $("#overlay").hide();
+        $("#publicSpaceQuestion").show();
+    });  
+    
+    
+    var x = window.matchMedia("(max-width: 500px)")
+    myFunction(x) // Call listener function at run time
+    x.addListener(myFunction) // Attach listener function on state changes
+        
+    function myFunction(x) {
+        if (x.matches) { // If media query matches
+            
+            $('.feed1').mousemove(function() {
+                $('#vote').show();
+            });    
+            
+/*            $('.feed2').mousemove(function() {
+                $('#vote2').show();
+            });               
+            $('.feed3').mousemove(function() {
+                $('#vote3').show();
+            });               
+            $('.feed4').mousemove(function() {
+                $('#vote4').show();
+            });               
+            $('.feed5').mousemove(function() {
+                $('#vote5').show();
+            });               
+            $('.feed6').mousemove(function() {
+                $('#vote6').show();
+            });    */ 
+            
+            
+            } else {
+                
+            $(document).ready(function(){
+                
+                function delayCheckVote(){
+                    if(timedelayVote == 2)
+                    {               
+                        $('#vote').fadeOut();
+                        timedelayVote = 1;
+                    }
+
+                    timedelayVote = timedelayVote+1;
+                }
+
+                $('.feed1').mousemove(function() {
+                    $('#vote').fadeIn();
+                    timedelayVote = 1;
+                    clearInterval(_delay2);
+                    _delay2 = setInterval(delayCheckVote, 500);
+                });        
+
+                _delay2 = setInterval(delayCheckVote, 2500);        
+
+                function delayCheckVote2(){
+                    if(timedelayVote == 2)
+                    {               
+                        $('#vote2').fadeOut();
+                        timedelayVote = 1;
+                    }
+
+                    timedelayVote = timedelayVote+1;
+                }
+
+                $('.feed2').mousemove(function() {
+                    $('#vote2').fadeIn();
+                    timedelayVote = 1;
+                    clearInterval(_delay3);
+                    _delay3 = setInterval(delayCheckVote2, 500);
+                });        
+
+                _delay3 = setInterval(delayCheckVote2, 2500);        
+
+                function delayCheckVote3(){
+                    if(timedelayVote == 2)
+                    {               
+                        $('#vote3').fadeOut();
+                        timedelayVote = 1;
+                    }
+
+                    timedelayVote = timedelayVote+1;
+                }
+
+                $('.feed3').mousemove(function() {
+                    $('#vote3').fadeIn();
+                    timedelayVote = 1;
+                    clearInterval(_delay4);
+                    _delay4 = setInterval(delayCheckVote3, 500);
+                });        
+
+                _delay4 = setInterval(delayCheckVote3, 2500);        
+
+
+                function delayCheckVote4(){
+                    if(timedelayVote == 2)
+                    {               
+                        $('#vote4').fadeOut();
+                        timedelayVote = 1;
+                    }
+
+                    timedelayVote = timedelayVote+1;
+                }
+
+                $('.feed4').mousemove(function() {
+                    $('#vote4').fadeIn();
+                    timedelayVote = 1;
+                    clearInterval(_delay5);
+                    _delay5 = setInterval(delayCheckVote4, 500);
+                });        
+
+                _delay5 = setInterval(delayCheckVote4, 2500);        
+
+                function delayCheckVote5(){
+                    if(timedelayVote == 2)
+                    {               
+                        $('#vote5').fadeOut();
+                        timedelayVote = 1;
+                    }
+
+                    timedelayVote = timedelayVote+1;
+                }
+
+                $('.feed5').mousemove(function() {
+                    $('#vote5').fadeIn();
+                    timedelayVote = 1;
+                    clearInterval(_delay6);
+                    _delay6 = setInterval(delayCheckVote5, 500);
+                });        
+
+                _delay6 = setInterval(delayCheckVote5, 2500);        
+
+                function delayCheckVote6(){
+                    if(timedelayVote == 2)
+                    {               
+                        $('#vote6').fadeOut();
+                        timedelayVote = 1;
+                    }
+
+                    timedelayVote = timedelayVote+1;
+                }
+
+                $('.feed6').mousemove(function() {
+                    $('#vote6').fadeIn();
+                    timedelayVote = 1;
+                    clearInterval(_delay7);
+                    _delay7 = setInterval(delayCheckVote6, 500);
+                });        
+
+                _delay7 = setInterval(delayCheckVote6, 2500);
+
+        });
+
+        }};
+    
+            $('#vote').click(function() {
+                $(".voteTally1").css("visibility", "visible");
+            });     
+
+            $('#vote2').click(function() {
+                $(".voteTally2").css("visibility", "visible");
+            });     
+
+            $('#vote3').click(function() {
+                $(".voteTally3").css("visibility", "visible");
+            });     
+
+            $('#vote4').click(function() {
+                $(".voteTally4").css("visibility", "visible");
+            });     
+
+            $('#vote5').click(function() {
+                $(".voteTally5").css("visibility", "visible");
+            });     
+
+            $('#vote6').click(function() {
+                $(".voteTally6").css("visibility", "visible");
+            });    
+    
+    var cnt=0;
+    function CountFun(e){
+        var id = e.target.dataset.id;
+        var type = e.target.dataset.type;
+        var votes = e.target.dataset.votes;
+        
+        firebase.database().ref(type + '/' + id + '/votes').set(parseInt(votes) + 1);
+    }    
+    
+</script>
+    
+</body>
+    
+
+</html>

@@ -1,0 +1,29 @@
+<html>
+<head>
+    </head>
+<body>
+    
+<script src="https://www.gstatic.com/firebasejs/7.2.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.2.0/firebase-database.js"></script>
+<script src="assets/database.js"></script>
+<script>
+    
+    const ref = firebase.database().ref('roundabout');
+    
+    
+    // Also add:-               , votes: 0, type: 'offices'
+    // votes: 0
+    // type: 'homes'
+    
+    ref.set([
+        {ip: 'http://188.82.155.75:81/mjpg/1/video.mjpg', location: 'Lisbon', description: '', votes: 2, type: 'roundabout'},
+        {ip: 'http://85.186.25.54/mjpg/1/video.mjpg', location: 'Russia - Tulcea', description: '', votes: 0, type: 'roundabout'},
+        {ip: 'http://87.26.128.79/cgi-bin/faststream.jpg', location: 'Italy - Rome', description: '', votes: 0, type: 'roundabout'},
+        {ip: 'http://87.54.226.246/mjpg/video.mjpg', location: 'Denmark - Tranbjerg', description: '', votes: 0, type: 'roundabout'},
+        {ip: 'http://195.1.188.76/mjpg/video.mjpg', location: 'Norway - Rogaland', description: '', votes: 0, type: 'roundabout'},
+        {ip: 'http://194.182.2.158/cgi-bin/faststream.jpg?stream=half&fps=15&rand=COUNTER', location: 'Denmark - Hovedstaden', description: '', votes: 1, type: 'roundabout'}
+    ]);
+</script>
+    
+    </body>
+</html>
